@@ -13,6 +13,7 @@ This is a tool thats make you can fastly and easily add or ignore keybindings in
 		+ [Install](#install)
 	- [Windows](#windows)
 * [Instruction](#instruction)
+* [Uninstall](#uninstall)
 * [License](#license)
 
 <!-- /TOC -->
@@ -41,6 +42,10 @@ Not support. You can manual compile the `main.cpp` and try use it
 ## Instruction
 
 See `vimek -h`
+
+## Uninstall
+
+Do `sudo make uninstall` in terminal
 
 ## License
 
