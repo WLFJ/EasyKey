@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a tool thats make you can fastly and easily add or ignore keybindings in [(Neo)](https://neovim.io)[Vim](https://www.vim.org).
+This is a tool that make you can fastly and easily add or ignore keybindings in [(Neo)](https://neovim.io)[Vim](https://www.vim.org).
 
 <!-- TOC GFM -->
 
