@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	bool normalmode = false;
 	bool visualmode = false;
 	
-	if (argc <= 1)
+	if (argc <= 2)
 	{
 		cout << help << endl;
 		exit(1);
@@ -39,23 +39,24 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	
+        // bad usage of array, check argc before access.
 	if (strcmp(argv[2], "-m") == 0)
 	{
 		recursive = false;
 	}
-	else if (strcmp(argv[2, 3], "-i") == 0)
+	else if (strcmp(argv[2], "-i") == 0)
 	{
 		insertmode = true;
 	}
-	else if (strcmp(argv[2, 3], "-n") == 0)
+	else if (strcmp(argv[2], "-n") == 0)
 	{
 		normalmode = true;
 	}
-	else if (strcmp(argv[2, 3], "-l") == 0)
+	else if (strcmp(argv[2], "-l") == 0)
 	{
 		visualmode = true;
 	}
-	
+        
 	addKeybindLine(neovim, recursive, insertmode, normalmode, visualmode);
 	return 0;
 }
@@ -90,8 +91,7 @@ void addKeybindLine(bool neovim, bool recursive, bool insertmode, bool normalmod
 	cin >> key;
 	cout << "Please enter the command: ";
 	cin >> cmd;
-	
-	
+
 	if (neovim == true)
 	{
 		cfgpath = "~/.config/nvim/init.vim";
@@ -100,41 +100,41 @@ void addKeybindLine(bool neovim, bool recursive, bool insertmode, bool normalmod
 	{
 		cfgpath = "~/.vim/vimrc";
 	}
-	
+        
 	if (recursive == true && whatMode == 0)
 	{
-		merged = "map ", key, " ", cmd;
+		merged = "map " + key + " " + cmd;
 	}
 	else if (recursive == false && whatMode == 0)
 	{
-		merged = "noremap ", key, " ", cmd;
+		merged = "noremap " + key + " " + cmd;
 	}
 	else if (recursive == true && whatMode == 1)
 	{
-		merged = "imap ", key, " ", cmd;
+		merged = "imap " + key + " " + cmd;
 	}
 	else if (recursive == false && whatMode == 1)
 	{
-		merged = "inoremap ", key, " ", cmd;
+		merged = "inoremap " + key + " " + cmd;
 	}
 	else if (recursive == true && whatMode == 2)
 	{
-		merged = "nmap ", key, " ", cmd;
+		merged = "nmap " + key + " " + cmd;
 	}
 	else if (recursive == false && whatMode == 2)
 	{
-		merged = "nnoremap ", key, " ", cmd;
+		merged = "nnoremap "+ key+ " "+ cmd;
 	}
 	else if (recursive == true && whatMode == 3)
 	{
-		merged = "vmap ", key, " ", cmd;
+		merged = "vmap "+ key+ " "+ cmd;
 	}
 	else if (recursive == false && whatMode == 3)
 	{
-		merged = "vnoremap", key, " ", cmd;
+		merged = "vnoremap "+ key+ " "+ cmd;
 	}
 	
-	sed = "sed -i '$a\\",merged , "' ", cfgpath;
+	sed = "sed -i '$a\\"+merged + "' "+ cfgpath;
 	
 	cout << sed << endl;
 }
